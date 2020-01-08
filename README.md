@@ -1,24 +1,53 @@
-# README
+# ChatSpace DB設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+## usersテーブル
 
-* Ruby version
+|Column|Type|Options|
+|------|----|-------|
+|email|string|null: false|
+|password|string|null: false|
+|username|string|null: false, index: true, unique: true|
 
-* System dependencies
+### Association
+- has_many :groups, through: :groups_users
+- has_many :groups_users
+- has_many :messages
 
-* Configuration
 
-* Database creation
+## groupsテーブル
 
-* Database initialization
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
 
-* How to run the test suite
+### Association
+- has_many :users, through: :groups_users
+- has_many :groups_users
+- has_many :messages
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## groups_usersテーブル
 
-* ...
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
+- belongs_to :group
+
+
+## messegesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|body|text|null: false|
+|image|string|
+|user_id|integer|foreign_key:true|
+|group_id|integer|foreign_key:true|
+
+### Association
+- belongs_to :user
+- belongs_to :group
