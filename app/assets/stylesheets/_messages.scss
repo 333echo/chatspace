@@ -7,6 +7,11 @@
   justify-content: space-between;
 }
 
+a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
 .side-bar {
   width: 300px;
   height: 100vh;
@@ -40,13 +45,15 @@
     height: calc(100vh - 100px);
     bottom: 0;
     font-weight: bold;
-    &__group-name {
-      font-size: 15px;
-      padding: 20px 20px 5px 20px;
-    }
-    &__group-message {
-      font-size: 11px;
-      padding: 0 20px 40px 20px;
+    &__group {
+      .group-name {
+        font-size: 15px;
+        padding: 20px 20px 5px 20px;
+      }
+      .group-message {
+        font-size: 11px;
+        padding: 0 20px 40px 20px;
+      }
     }
   }
 }
@@ -142,28 +149,32 @@
     @include space-between;
     align-items: center;
     padding: 20px 40px;
-    &__post-culumn {
-      width: 100%;
-      position: relative;
-      .left-part {
+      .new_message{
+        display: flex;
         width: 100%;
-        line-height: 50px;
-        border-style: none;
-        padding: 0 40px 0 10px;
       }
-      .right-part {
-        position: absolute;
-        right: 10px;
-        .choose-image {
-          visibility: visible;
+      &__post-culumn {
+        width: 100%;
+        position: relative;
+        .left-part {
+          width: 100%;
           line-height: 50px;
-          font-size: 1.7rem;
+          border-style: none;
+          padding: 0 40px 0 10px;
         }
-        .choose-file {
-          display: none;
+        .right-part {
+          position: absolute;
+          right: 10px;
+          .choose-image {
+            visibility: visible;
+            line-height: 50px;
+            font-size: 1.7rem;
+          }
+          .choose-file {
+            display: none;
+          }
         }
       }
-    }
     &__send-button {
       width: 100px;
       height: 50px;
