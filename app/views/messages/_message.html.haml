@@ -5,28 +5,7 @@
     = message.created_at.strftime("%Y年%m月%d日 %H時%M分")
 .timeline-text
   - if message.content.present?
+    %p.timeline__content
+      = message.content
   %p.timeline__content
-    = message.content
-      = image_tag message.image.url, class: "timeline__image" if message.image.present?
-
-  -# .chat-main__timeline__upper
-  -#  .contributor
-  -#   = message.user.name
-  -#  .datetime
-  -#   = message.created_at.strftime("%Y年%m月%d日 %H時%M分")
-  -# .timeline-text
-  -#  - if message.content.present?
-  -#   %p.timeline__content
-  -#    = message.content
-  -#  = image_tag message.image.url, class: "timeline__image" if message.image.present?
-  
--#  .chat-main__timeline
--#   .chat-main__timeline__upper
--#    .contributor 大阪次郎
--#    .datetime 2020/1/13(Mon) 12:00:07
--#   .timeline-text はじめまして、よろしくお願いします。
--#   .chat-main__timeline__upper
--#    .contributor 奈良三太
--#    .datetime 2020/1/13(Mon) 15:30:08
--#   .timeline-text こちらこそよろしくお願いします！
-  
+    = image_tag message.image_url, class: "timeline__image" if message.image.present?

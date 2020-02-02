@@ -7,7 +7,6 @@
         = "Member:"
         - @group.users.each do |user|
           = user.name
-    -# %a{href: "#"}
     = link_to "Edit", edit_group_path(@group), class: "chat-main__main-header__edit-button"
   .chat-main__timeline
     = render @messages
@@ -20,23 +19,3 @@
           = icon('far', 'image', class: 'choose-image')
           = f.file_field :image, class: 'choose-file'
       = f.submit 'Send', class: 'chat-main__post-form__send-button'
-
-
-.chat-main
-  .chat-main__main-header
-    .chat-main__main-header__left-box
-      .current-group TECH::CAMP
-      .current-member Member:京都太郎
-    %a{href: "#"}
-    -# = link_to 
-    .chat-main__main-header__edit-button Edit
-  .chat-main__timeline
-    = render @messages
-
-  -# .chat-main__post-form
-  -#   .chat-main__post-form__post-culumn
-  -#     %input{placeholder: "type a message", class: "left-part"}
-  -#     %label{class: "right-part"}
-  -#       %i.far.fa-image{class: "choose-image"}
-  -#       %input{type: "file", class: "choose-file"}
-  -#   .chat-main__post-form__send-button Send
