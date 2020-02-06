@@ -1,4 +1,4 @@
-.chat-main__timeline__upper
+.chat-main__timeline__upper{data: {message: {id: message.id}}}
   .current-member
     = message.user.name
   .datetime
@@ -8,4 +8,4 @@
     %p.timeline__content
       = message.content
   %p.timeline__content
-    = image_tag message.image_url, class: "timeline__image" if message.image.present?
+    = image_tag message.image.url, class: "timeline__image" if message.image.present?
