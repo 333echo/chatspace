@@ -1,56 +1,53 @@
 $(function(){ 
   var buildHTML = function(message) {
     if (message.content && message.image) {
-      var html = 
-      `<div class="chat-main__timeline__upper" data-message-id=` + message.id + `>` +
-        `<div class="current-member">` +
-          message.user_name +
-        `</div>` +
-        `<div class="datetime">` +
-          message.created_at +
-        `</div>` +
-      `</div>` +
-      `<div class="timeline-text">` +
-        `<p class="timeline__content">` +
-          message.content +
-        `</p>` +
-        `<p class="timeline__content">` +
-          `<img src="` + message.image + `" class="timeline_image" >` +
-        `</p>` +
-      `</div>` +
-    `</div>`
+      var html =
+        `<div class="chat-main__timeline__upper", data-message-id=${message.id}>
+           <div class="current-member">
+             ${message.user_name}
+           </div>
+           <div class="datetime">
+             ${message.created_at}
+           </div>
+         </div>
+         <div class="timeline-text">
+           <p class="timeline__content">
+             ${message.content}
+           </p>
+           <p class="timeline__content">
+             <img src="${message.image}", class="timeline_image">
+           </p>
+         </div>`
     } else if (message.content) {
-      var html = 
-        `<div class="chat-main__timeline__upper" data-message-id=` + message.id + `>` +
-          `<div class="current-member">` +
-            message.user_name +
-          `</div>` +
-          `<div class="datetime">` +
-            message.created_at +
-          `</div>` +
-        `</div>` +
-        `<div class="timeline-text">` +
-          `<p class="timeline__content">` +
-            message.content +
-          `</p>` +
-        `</div>` +
-      `</div>`
+      var html =
+        `<div class="chat-main__timeline__upper", data-message-id=${message.id}>
+           <div class="current-member">
+             ${message.user_name}
+           </div>
+           <div class="datetime">
+             ${message.created_at}
+           </div>
+         </div>
+         <div class="timeline-text">
+           <p class="timeline__content">
+             ${message.content}
+           </p>
+         </div>`
     } else if (message.image) {
       var html = 
-        `<div class="chat-main__timeline__upper" data-message-id=` + message.id + `>` +
-          `<div class="current-member">` +
-            message.user_name +
-          `</div>` +
-          `<div class="datetime">` +
-            message.created_at +
-          `</div>` +
-        `</div>` +
-        `<div class="timeline-text">` +
-          `<p class="timeline__content">` +
-            `<img src="` + message.image + `" class="timeline_image" >` +
-          `</p>` +
-        `</div>` +
-      `</div>`
+        `<div class="chat-main__timeline__upper", data-message-id=${message.id}>
+           <div class="current-member">
+             ${message.user_name}
+           </div>
+           <div class="datetime">
+             ${message.created_at}
+           </div>
+         </div>
+         <div class="timeline-text">
+           <p class="timeline__content">
+             <img src="${message.image}", class="timeline_image">
+           </p>
+         </div>`
     };
     return html;
   };
@@ -78,7 +75,8 @@ $(function(){
     })
   });
   var reloadMessages = function() {
-    last_message_id = $('.chat-main__timeline:last').data("message-id");
+    last_message_id = $('.chat-main__timeline__upper:last').data("message-id");
+    console.log(last_message_id)
     $.ajax({
       url: "api/messages",
       type: 'get',
